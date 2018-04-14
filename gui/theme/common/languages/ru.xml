@@ -687,5 +687,47 @@
 		<string name="copy_kernel_log">Kernel Log скопирован в {1}</string>
 		<string name="include_kernel_log">Добавить Kernel Log</string>
 		<string name="unable_set_boot_slot">Ошибка смены слота загрузки bootloader на {1}</string>
+
+		<!--mod tools-->
+		<string name="tools_hdr">Tools</string>
+		<string name="tools">Tools</string>
+		<string name="SuperSU_btn">SuperSU</string>
+		<string name="SuperSU_text">SuperSU будет установлен.</string>
+		<string name="SuperSU_confirm">Попробуйте установить его ?</string>
+		<string name="Lazy_Flasher_btn">Lazy Flasher</string>
+		<string name="Lazy_Flasher_text">Lazy Flasher будет установлен.</string>
+		<string name="Lazy_Flasher_confirm">Попробуйте установить его ?</string>
+		<string name="Unroot_SuperSU_btn">Unroot SuperSU</string>
+		<string name="Unroot_SuperSU_text">Unroot SuperSU будет установлен.</string>
+		<string name="Unroot_SuperSU_confirm">Попробуйте установить его ?</string>
+		<string name="Magisk_btn">Magisk</string>
+		<string name="Magisk_text">Magisk будет установлен.</string>
+		<string name="Magisk_confirm">Попробуйте установить его ?</string>
+		<string name="Unroot_Magisk_btn">Unroot Magisk</string>
+		<string name="Unroot_Magisk_text">Unroot Magisk будет установлен.</string>
+		<string name="Unroot_Magisk_confirm">Попробуйте установить его ?</string>
+		<string name="Reset_Password_btn">Reset Password</string>
+		<string name="Reset_Password_text">Reset Password будет установлен.</string>
+		<string name="Reset_Password_confirm">Попробуйте установить его ?</string>
+		
+		<!--mod tools2-->
+		<string name="tools2_hdr">Tools2</string>
+		<string name="tools2">Tools2</string>
+		<string name="Stock_Splash_btn">Stock Splash</string>
+		<string name="Stock_Splash_text">Stock Splash будет установлен.</string>
+		<string name="Stock_Splash_confirm">Попробуйте установить его ?</string>
+		<string name="Enable_HAL3_btn">Enable HAL3</string>
+		<string name="Enable_HAL3_text">Enable HAL3 будет установлен.</string>
+		<string name="Enable_HAL3_confirm">Попробуйте установить его ?</string>
+		<string name="App_Delete_btn">App Delete</string>
+		<string name="App_Delete_text">App Delete будет установлен.</string>
+		<string name="App_Delete_confirm">Попробуйте установить его ?</string>
+		<string name="Ramdisk_Cleaner_btn">Ramdisk Cleaner</string>
+		<string name="Ramdisk_Cleaner_text">Ramdisk Cleaner будет установлен.</string>
+		<string name="Ramdisk_Cleaner_confirm">Попробуйте установить его ?</string>
+		
+		<!--md about-->
+		<string name="about">About</string>
+		<string name="about_hdr">About</string>
 	</resources>
 </language>
