@@ -53,14 +53,13 @@
 		<image name="slider_used" filename="slider_used"/>
 		<image name="slider_touch" filename="slider_touch"/>
 		<image name="handle" filename="handle"/>
+		<image name="handle_hl" filename="handle_hl"/>
 		<image name="cursor" filename="cursor" retainaspect="1"/>
 		<image name="tab_general" filename="tab_general" retainaspect="1"/>
 		<image name="tab_timezone" filename="tab_timezone" retainaspect="1"/>
 		<image name="tab_display" filename="tab_display" retainaspect="1"/>
 		<image name="tab_vibration" filename="tab_vibration" retainaspect="1"/>
-		<image name="background" filename="background" retainaspect="1"/>
 		<image name="tab_language" filename="tab_language" retainaspect="1"/>
-
 		<image name="backspace" filename="backspace" retainaspect="1"/>
 		<image name="enter" filename="enter" retainaspect="1"/>
 		<image name="shift" filename="shift" retainaspect="1"/>
@@ -120,7 +119,7 @@
 		<variable name="row3abc_header_y" value="120"/>
 		<variable name="row4_header_y" value="168"/>
 		<variable name="row1_y" value="256"/>
-		<variable name="row1a_y" value="288"/>
+		<variable name="row1a_y" value="278"/>
 		<variable name="row2_y" value="320"/>
 		<variable name="row2a_y" value="352"/>
 		<variable name="row_tab_y" value="346"/>
@@ -192,6 +191,7 @@
 		<variable name="error" value="#FF0101"/>
 		<variable name="highlight" value="#FFFFFF"/>
 		<variable name="fileselector_linecolor" value="#000000"/>
+		<variable name="fileselector_linecolor2" value="#FFFFFF"/>
 		<variable name="fileselector_highlight_color" value="#555555"/>
 		<variable name="fileselector_separatorheight" value="2"/>
 		<variable name="fileselector_spacing" value="0"/>
@@ -213,10 +213,10 @@
 		<variable name="slider_y" value="1560"/>
 		<variable name="slider_text_y" value="1590"/>
 		<variable name="slidervalue_w" value="984"/>
-		<variable name="slidervalue_lineh" value="6"/>
-		<variable name="slidervalue_padding" value="72"/>
-		<variable name="slidervalue_sliderw" value="120"/>
-		<variable name="slidervalue_sliderh" value="180"/>
+		<variable name="slidervalue_lineh" value="3"/>
+		<variable name="slidervalue_padding" value="0"/>
+		<variable name="slidervalue_sliderw" value="108"/>
+		<variable name="slidervalue_sliderh" value="72"/>
 		<variable name="slidervalue_padding" value="0"/>
 		<variable name="slideout_height" value="1686"/>
 		<variable name="slideout_bg_height" value="1720"/>
@@ -241,13 +241,12 @@
 		<template name="page">
 			<background color="%background_color%"/>
 			
-			<image> 
-                <image resource="background"/> 
-                <placement y="0" x="0"/> 
-                </image>
-
-			<fill color="%accent_color%">
+			<fill color="#000000">
 				<placement x="0" y="0" w="%screen_width%" h="%header_height%"/>
+			</fill>
+			
+			<fill color="#FFFFFF">
+				<placement x="0" y="256" w="1080" h="5"/>
 			</fill>
 
 			<image>
