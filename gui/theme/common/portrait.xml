@@ -98,7 +98,7 @@
 			<separator color="%fileselector_linecolor%" height="%fileselector_separatorheight%"/>
 			<sort name="tw_gui_sort_order"/>
 			<icon folder="folder" file="file"/>
-			<background color="%background_color%"/>
+			<background color="#7F000000"/>
 			<font resource="font_m" spacing="%fileselector_spacing%" color="%text_color%" highlightcolor="%accent_color%"/>
 		</style>
 
@@ -142,7 +142,7 @@
 		</style>
 
 		<style name="slider">
-			<placement x="%center_x%" y="%row23_y%"/>
+			<placement x="%center_x%" y="%row23_y%" placement="4"/>
 			<font resource="font_s" color="%text_color%"/>
 			<resource base="slider" used="slider_used" touch="slider_touch"/>
 		</style>
@@ -150,7 +150,7 @@
 		<style name="slidervalue">
 			<resource handle="handle"/>
 			<font resource="font_m" color="%text_color%"/>
-			<colors line="%fileselector_linecolor%"/>
+			<colors line="%fileselector_linecolor2%"/>
 			<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
 		</style>
 
@@ -3830,24 +3830,24 @@
 				<text>Developed by Sipun Ku Mahanta</text>
 			</text>
 			
-			<text style="text_m">
-			    <placement x="540" y="940" placement="5"/>
-				<text>- Thanks to -</text>
+			<text style="text_l">
+			    <placement x="540" y="860" placement="5"/>
+				<text>Themed by G.M.L.</text>
 			</text>
 			
 			<text style="text_m">
 			    <placement x="540" y="990" placement="5"/>
-				<text>Darshan1205 - For Official TWRP</text>
+				<text>- Thanks to -</text>
 			</text>
 			
 			<text style="text_m">
 			    <placement x="540" y="1040" placement="5"/>
-				<text>G.M.L - For themes</text>
+				<text>twrp.me - For Official TWRP</text>
 			</text>
 			
 			<text style="text_m">
 			    <placement x="540" y="1090" placement="5"/>
-				<text>Firewolf - For His Pitchblack TWRP</text>
+				<text>Reza Adi - For His Pitchblack TWRP</text>
 			</text>
 			
 			<text style="text_m">
