@@ -215,9 +215,8 @@
 		<variable name="slidervalue_w" value="984"/>
 		<variable name="slidervalue_lineh" value="3"/>
 		<variable name="slidervalue_padding" value="0"/>
-		<variable name="slidervalue_sliderw" value="108"/>
-		<variable name="slidervalue_sliderh" value="72"/>
-		<variable name="slidervalue_padding" value="0"/>
+		<variable name="slidervalue_sliderw" value="72"/>
+		<variable name="slidervalue_sliderh" value="108"/>
 		<variable name="slideout_height" value="1686"/>
 		<variable name="slideout_bg_height" value="1720"/>
 		<variable name="input_height" value="64"/>
