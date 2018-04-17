@@ -713,9 +713,6 @@
 		<!--mod tools2-->
 		<string name="tools2_hdr">Tools2</string>
 		<string name="tools2">Tools2</string>
-		<string name="Stock_Splash_btn">Stock Splash</string>
-		<string name="Stock_Splash_text">Stock Splash будет установлен.</string>
-		<string name="Stock_Splash_confirm">Попробуйте установить его ?</string>
 		<string name="Enable_HAL3_btn">Enable HAL3</string>
 		<string name="Enable_HAL3_text">Enable HAL3 будет установлен.</string>
 		<string name="Enable_HAL3_confirm">Попробуйте установить его ?</string>
