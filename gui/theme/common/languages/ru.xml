@@ -687,7 +687,7 @@
 		<string name="copy_kernel_log">Kernel Log скопирован в {1}</string>
 		<string name="include_kernel_log">Добавить Kernel Log</string>
 		<string name="unable_set_boot_slot">Ошибка смены слота загрузки bootloader на {1}</string>
-
+		
 		<!--mod tools-->
 		<string name="tools_hdr">Tools</string>
 		<string name="tools">Tools</string>
@@ -722,9 +722,5 @@
 		<string name="Ramdisk_Cleaner_btn">Ramdisk Cleaner</string>
 		<string name="Ramdisk_Cleaner_text">Ramdisk Cleaner будет установлен.</string>
 		<string name="Ramdisk_Cleaner_confirm">Попробуйте установить его ?</string>
-		
-		<!--md about-->
-		<string name="about">About</string>
-		<string name="about_hdr">About</string>
 	</resources>
 </language>
