@@ -10,7 +10,7 @@
 	</details>
 
 	<include>
-		<xmlfile name="dark_recovery.xml"/>
+		<xmlfile name="portrait.xml"/>
 	</include>
 
 	<resources>
