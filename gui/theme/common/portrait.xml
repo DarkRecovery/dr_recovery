@@ -5705,12 +5705,7 @@
 		</page>
 
 		<page name="lock">
-			<background color="%semi_transparent%"/>
-
-			<image>
-				<image resource="unlock_icon"/>
-				<placement x="%center_x%" y="%row10_y%" placement="4"/>
-			</image>
+			<background color="#000000"/>
 			
 			<action>
 				<touch key="power+voldown" />
