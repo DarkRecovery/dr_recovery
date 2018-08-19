@@ -185,7 +185,7 @@
 			<font resource="font_m3" color="#FF0031"/>
 			<image resource="main_button_half_height_full_width"/>
 		</style>
-
+		
 		<style name="button_third_width">
 			<highlight color="%highlight_color%"/>
 			<font resource="font_m" color="%text_button_color%"/>
@@ -196,6 +196,12 @@
 			<highlight color="%highlight_color%"/>
 			<font resource="font_m" color="%text_button_color%"/>
 			<image resource="tab_3"/>
+		</style>
+		
+		<style name="tools_button">
+			<highlight color="%highlight_color%"/>
+			<font resource="font_l" color="%text_button_color%"/>
+			<image resource="tools_button"/>
 		</style>
 
 		<style name="button_quarter_width">
@@ -218,6 +224,10 @@
 		
 		<style name="status_logo">
 			<image resource="status_logo"/>
+		</style>
+		
+		<style name="ds_theme_button">
+			<image resource="ds_theme_button"/>
 		</style>
 		
 		<style name="password_logo">
@@ -381,7 +391,7 @@
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="240"/>
+				<placement x="%indent_main_button%" y="260"/>
 				<text>{@install_btn=Install}</text>
 				<actions>
 					<action function="queueclear"/>
@@ -391,501 +401,72 @@
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="390"/>
+				<placement x="%indent_main_button%" y="410"/>
 				<text>{@wipe_btn=Wipe}</text>
 				<action function="page">wipe</action>
 			</button>
 			
 			<button style="main_button_n">
 				<condition var1="auto_generate" var2="0"/>
-				<placement x="%indent_main_button%" y="540"/>
-				<text>{@backup_btn=Backup}</text>
-				<action function="page">backup</action>
-			</button>
-			
-			<button style="main_button_n">
-				<condition var1="auto_generate" var2="1"/>
-				<placement x="%indent_main_button%" y="540"/>
+				<placement x="%indent_main_button%" y="560"/>
 				<text>{@backup_btn=Backup}</text>
 				<actions>
-					<action function="set">tw_backup_name=</action>
+					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
 					<action function="page">backup</action>
 				</actions>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="690"/>
+				<condition var1="auto_generate" var2="1"/>
+				<placement x="%indent_main_button%" y="560"/>
+				<text>{@backup_btn=Backup}</text>
+				<actions>
+					<action function="generatebackupname"/>
+					<action function="page">backup</action>
+				</actions>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="710"/>
 				<text>{@restore_btn=Restore}</text>
 				<action function="page">restore</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="840"/>
+				<placement x="%indent_main_button%" y="860"/>
 				<text>{@mount_btn=Mount}</text>
 				<action function="page">mount</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="990"/>
+				<placement x="%indent_main_button%" y="1010"/>
 				<text>{@file_manager_btn=File Manager}</text>
 				<action function="page">filemanagerlist</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1140"/>
+				<placement x="%indent_main_button%" y="1160"/>
 				<text>{@advanced_btn=Advanced}</text>
 				<action function="page">advanced</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1290"/>
+				<placement x="%indent_main_button%" y="1310"/>
 				<text>{@reboot_btn=Reboot}</text>
 				<action function="page">reboot</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1440"/>
+				<placement x="%indent_main_button%" y="1460"/>
 				<text>{@settings_hdr=Settings}</text>
 				<action function="page">settings</action>
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1590"/>
+				<placement x="%indent_main_button%" y="1610"/>
 				<text>Extra Tools</text>
 				<action function="page">tool_settings</action>
 			</button>
-			
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-		
-		<page name="tool_settings">
-			<template name="page_n"/>
-			
-			<button style="status_logo">
-				<placement x="270" y="40"/>
-				<action function="screenshot"/>
-			</button>
-			
-			<button>
-				<placement x="62" y="390"/>
-				<image resource="gml_logo"/>
-				<action function="screenshot"/>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1200"/>
-				<text>{@tools=Tools}</text>
-				<action function="page">tools</action>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1350"/>
-				<text>Extra Tools</text>
-				<action function="page">tools2</action>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1500"/>
-				<text>{@about_theme=About Theme}</text>
-				<action function="page">about</action>
-			</button>
-			
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-		
-		<page name="tools">
-			<template name="page_n"/>
-			
-			<button style="status_logo">
-				<placement x="270" y="40"/>
-				<action function="screenshot"/>
-			</button>
-			
-                        <button style="main_button_n">
-                                <placement x="%indent_main_button%" y="240"/>
-                                <text>Magisk-Treble</text>
-                                <actions>
-                                        <action function="set">tw_back=advanced</action>
-                                        <action function="set">tw_filename=/sdcard/TWRP/tools/magisk-treble.zip</action>
-                                        <action function="set">tw_action=queuezip</action>
-                                        <action function="set">tw_has_action2=1</action>
-                                        <action function="set">tw_action2=flash</action>
-                                        <action function="set">tw_action2_param=flash_zip</action>
-                                        <action function="set">tw_text1={@Magisk_text=Magisk will be installed.}</action>
-                                        <action function="set">tw_text2={@Magisk_confirm=Try to install it?}</action>
-                                        <action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-                                        <action function="page">confirm_action</action>
-                                </actions>
-                        </button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="390"/>
-				<text>Magisk-Normal</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/magisk.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Magisk_text=Magisk will be installed.}</action>
-					<action function="set">tw_text2={@Magisk_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="540"/>
-				<text>{@Unroot_Magisk_btn=Unroot Magisk}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/unrootmagisk.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Unroot_Magisk_text=Unroot Magisk will be installed.}</action>
-					<action function="set">tw_text2={@Unroot_Magisk_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="690"/>
-				<text>{@Lazy_Flasher_btn=Lazy Flasher}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/lazyflasher.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Lazy_Flasher_text=Lazy Flasher will be installed.}</action>
-					<action function="set">tw_text2={@Lazy_Flasher_confirm=Try to Lazy Flasher Device?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="840"/>
-				<text>{@Reset_Password_btn=Reset Password}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/rmpass.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Reset_Password_text=Reset Password will be installed.}</action>
-					<action function="set">tw_text2={@Reset_Password_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="990"/>
-				<text>Aroma File Manager</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/aroma.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1=Aroma will be installed.</action>
-					<action function="set">tw_text2=Try to install it?</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<action>
-				<touch key="back"/>
-				<action function="page">tool_settings</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-		
-		<page name="tools2">
-			<template name="page_n"/>
-			
-			<button style="status_logo">
-				<placement x="270" y="40"/>
-				<action function="screenshot"/>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="240"/>
-				<text>{@Ramdisk_Cleaner_btn=Ramdisk Cleaner}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/ramdiskcleaner.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Ramdisk_Cleaner_text=Ramdisk Cleaner will be installed.}</action>
-					<action function="set">tw_text2={@Ramdisk_Cleaner_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="390"/>
-				<text>{@Enable_HAL3_btn=Enabled HAL3}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/enablehal3.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Enable_HAL3_text=Enable HAL3 will be installed.}</action>
-					<action function="set">tw_text2={@Enable_HAL3_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="540"/>
-				<text>Disable HAL3</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/disablehal3.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1=Disable HAL3 will be installed.</action>
-					<action function="set">tw_text2={@Enable_HAL3_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="690"/>
-				<text>{@App_Delete_btn=App Delete}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/appdel.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@App_Delete_text=App Delete will be installed.}</action>
-					<action function="set">tw_text2={@App_Delete_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="840"/>
-				<text>Enable Navbar</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/nb.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1=Navbar will be installed.</action>
-					<action function="set">tw_text2=Try to install it?</action>
-										<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="990"/>
-				<text>Disable Navbar</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/unnb.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1=Navbar will be uninstalled.</action>
-					<action function="set">tw_text2=Try to install it?</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="1140"/>
-				<text>Subs Overlay Remover</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools2/subs.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1=subs overlay remover will be uninstalled.</action>
-					<action function="set">tw_text2=Try to install it?</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<action>
-				<touch key="back"/>
-				<action function="page">tool_settings</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-		
-		<page name="about">
-			<template name="about"/>
-			
-			<button>
-				<placement x="62" y="50"/>
-				<image resource="gml_logo"/>
-				<action function="screenshot"/>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="735"/>
-				<image resource="icon_theme"/>
-			</image>
-			
-			<image>
-				<placement x="%col1_x%" y="835"/>
-				<image resource="icon_creator"/>
-			</image>
-			
-			<image>
-				<placement x="%col1_x%" y="935"/>
-				<image resource="icon_tester"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="1060"/>
-				<image resource="icon_credits"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="1500"/>
-				<image resource="icon_about"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="1640"/>
-				<image resource="icon_date"/>
-			</image>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="735"/>
-				<text>{@theme=Theme:}</text>
-			</text>
-			
-			<text color="#EEEEEE">
-				<font resource="font_m"/>
-				<placement x="355" y="735"/>
-				<text>Dark Material TWRP</text>
-			</text>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="835"/>
-				<text>Developed by:</text>
-			</text>
-			
-			<text color="#EEEEEE">
-				<font resource="font_m"/>
-				<placement x="477" y="835"/>
-				<text>Sipun Ku Mahanta</text>
-			</text>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="935"/>
-				<text>{@about1=Theme Designer:}</text>
-			</text>
-			
-			<text color="#EEEEEE">
-				<font resource="font_m"/>
-				<placement x="519" y="935"/>
-				<text>G.M.L.</text>
-			</text>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="1060"/>
-				<text>{@credits=Credits:}</text>
-			</text>
-			
-			<listbox style="changelog">
-				<placement x="220" y="1129" w="774" h="350"/>
-				<listitem name="twrp.me - For Official TWRP"/>
-				<listitem name="PitchBlack Team - For Pitchblack TWRP"/>
-				<listitem name="Chainfire - For SuperSU"/>
-				<listitem name="Topjohnwu - For Magisk"/>
-				<listitem name="Redwolf Team - For Redwolf TWRP"/>
-				<listitem name="Jcadduono - For Lazyflasher"/>
-				<listitem name="The Pirate Predator - App Deleter"/>
-				<listitem name="Helmiau - Cam2API Enabler(HAL3)"/>
-				<listitem name="Magua - Password Remover"/>
-				<listitem name="You - For Using It"/>
-			</listbox>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="1500"/>
-				<text>{@about9=Version:}</text>
-			</text>
-			
-			<text color="#EEEEEE">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="1560"/>
-				<text>{@about10=TWRP: %tw_version%}</text>
-			</text>
-			
-			<text color="%themeheader_color%">
-				<font resource="font_m"/>
-				<placement x="%col1_x_indent%" y="1640"/>
-				<text>{@about11=Date Project:}</text>
-			</text>
-			
-			<text color="#EEEEEE">
-				<font resource="font_m"/>
-				<placement x="465" y="1640"/>
-				<text>30/04/18</text>
-			</text>
 			
 			<action>
 				<touch key="back"/>
@@ -1436,7 +1017,7 @@
 			</button>
 
 			<button style="main_button_n">
-				<placement x="0" y="1622"/>
+				<placement x="0" y="1610"/>
 				<text>{@install_confirm=Install Confirm}</text>
 				<action function="page">install_page</action>
 			</button>
@@ -4331,7 +3912,7 @@
 			
 			<button style="main_button_n">
 				<condition var1="tw_reboot_system" var2="1"/>
-				<placement x="%indent_main_button%" y="240"/>
+				<placement x="%indent_main_button%" y="260"/>
 				<text>{@rb_system_btn=System}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4341,7 +3922,7 @@
 
 			<button style="main_button_n">
 				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<placement x="%indent_main_button%" y="390"/>
+				<placement x="%indent_main_button%" y="410"/>
 				<text>{@rb_poweroff_btn=Power Off}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4360,7 +3941,7 @@
 
 			<button style="main_button_n">
 				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="%indent_main_button%" y="540"/>
+				<placement x="%indent_main_button%" y="560"/>
 				<text>{@rb_recovery_btn=Recovery}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4379,7 +3960,7 @@
 
 			<button style="main_button_n">
 				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<placement x="%indent_main_button%" y="840"/>
+				<placement x="%indent_main_button%" y="710"/>
 				<text>{@rb_bootloader_btn=Bootloader}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4396,9 +3977,17 @@
 				</actions>
 			</button>
 
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="860"/>
+				<text>{@reload_theme_btn=Reload Theme}</text>
+				<action function="overlay"/>
+				<action function="page">reload_theme</action>
+			</button>
+			
+			
 			<button style="main_button">
 				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%indent_main_button%" y="%btn6_row%"/>
+				<placement x="%indent_main_button%" y="1160"/>
 				<text>{@rb_download_btn=Download}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4415,22 +4004,9 @@
 				</actions>
 			</button>
 			
-			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="690"/>
-				<text>{@reload_theme_btn=Reload Theme}</text>
-				<action function="overlay"/>
-				<action function="page">reload_theme</action>
-			</button>
-			
-			<text style="text_m">
-				<condition var1="tw_has_boot_slots" var2="1"/>
-				<placement x="%center_x%" y="%row17_y%" placement="5"/>
-				<text>{@current_boot_slot=Current Slot: %tw_active_slot%}</text>
-			</text>
-
 			<button style="main_button">
 				<condition var1="tw_has_boot_slots" var2="1"/>
-				<placement x="%indent%" y="%row19_y%"/>
+				<placement x="%indent_main_button%" y="1310"/>
 				<text>{@boot_slot_a=Slot A}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4446,7 +4022,7 @@
 
 			<button style="main_button">
 				<condition var1="tw_has_boot_slots" var2="1"/>
-				<placement x="%center_x%" y="%row19_y%"/>
+				<placement x="%indent_main_button%" y="%row19_y%"/>
 				<text>{@boot_slot_b=Slot B}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
@@ -4664,13 +4240,8 @@
 			</image>
 
 			<button style="main_button_half_height">
-<<<<<<< HEAD
 				<placement x="%indent%" y="1578"/>
 				<text>{@reboot_to_system=Reboot to System}</text>
-=======
-				<placement x="%indent%" y="%row16_y%"/>
-				<text>{@install_cancel=Do not Install}</text>
->>>>>>> fa67cbf1... Remove SuperSU
 				<action function="reboot">%tw_reboot_param%</action>
 			</button>
 			
@@ -5276,21 +4847,21 @@
 			</button>
 			
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="240"/>
+				<placement x="%indent_main_button%" y="260"/>
 				<text>{@copy_log_btn=Copy Logs}</text>
 				<action function="page">copylog</action>
 			</button>
 
 			<button style="main_button_n">
 				<condition var1="tw_has_data_media" var2="1"/>
-				<placement x="%indent_main_button%" y="390"/>
+				<placement x="%indent_main_button%" y="410"/>
 				<text>{@fix_contexts_hdr=Fix Contexts}</text>
 				<action function="page">fixcontexts</action>
 			</button>
 
 			<button style="main_button_n">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%indent_main_button%" y="540"/>
+				<placement x="%indent_main_button%" y="560"/>
 				<text>{@part_sd_btn=Partition SD Card}</text>
 				<actions>
 					<action function="set">partitionlisterror=0</action>
@@ -5299,13 +4870,13 @@
 			</button>
 
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="690"/>
+				<placement x="%indent_main_button%" y="710"/>
 				<text>{@adb_sideload_btn=ADB Sideload}</text>
 				<action function="page">sideload</action>
 			</button>
 
 			<button style="main_button_n">
-				<placement x="%indent_main_button%" y="840"/>
+				<placement x="%indent_main_button%" y="860"/>
 				<text>{@terminal_btn=Terminal}</text>
 				<action function="page">terminalcommand</action>
 			</button>
@@ -5348,91 +4919,6 @@
 			</action>
 		</page>
 		
-		<page name="advanced_stock">
-			<template name="page_n"/>
-
-			<button style="status_logo">
-				<placement x="270" y="40"/>
-				<action function="screenshot"/>
-			</button>
-
-			<button style="main_button_stock">
-				<placement x="%indent%" y="%row2a_y%"/>
-				<text>{@copy_log_btn=Copy Log}</text>
-				<action function="page">copylog</action>
-			</button>
-
-			<button style="main_button_stock">
-				<condition var1="tw_has_data_media" var2="1"/>
-				<placement x="%center_x%" y="%row2a_y%"/>
-				<text>{@fix_context_btn=Fix Contexts}</text>
-				<action function="page">fixcontexts</action>
-			</button>
-
-			<button style="main_button_stock">
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%indent%" y="%row8_y%"/>
-				<text>{@part_sd_btn=Partition SD Card}</text>
-				<actions>
-					<action function="set">partitionlisterror=0</action>
-					<action function="page">partsdcardsel</action>
-				</actions>
-			</button>
-
-			<button style="main_button_stock">
-				<placement x="%center_x%" y="%row8_y%"/>
-				<text>{@file_manager_btn=File Manager}</text>
-				<action function="page">filemanagerlist</action>
-			</button>
-
-			<button style="main_button_stock">
-				<placement x="%indent%" y="%row13a_y%"/>
-				<text>{@terminal_btn=Terminal}</text>
-				<action function="page">terminalcommand</action>
-			</button>
-
-			<button style="main_button_stock">
-				<conditions>
-					<condition var1="tw_is_multirom" var2="1"/>
-					<condition var1="tw_busy" var2="0"/>
-				</conditions>
-				<placement x="%indent%" y="%row19_y%"/>
-				<text>{@multirom=Multirom}</text>
-				<action function="multirom"/>
-			</button>
-
-			<button style="main_button_stock">
-				<placement x="%center_x%" y="%row13a_y%"/>
-				<text>{@adb_sideload_btn=ADB Sideload}</text>
-				<action function="page">sideload</action>
-			</button>
-
-			<button style="main_button">
-				<condition var1="tw_has_injecttwrp" var2="1"/>
-				<placement x="%center_x%" y="%row19_y%"/>
-				<text>{@inject_twrp_btn=Inject TWRP}</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_action=reinjecttwrp</action>
-					<action function="set">tw_text1={@inject_twrp_confirm=Re-Inject TWRP?}</action>
-					<action function="set">tw_action_text1={@injecting_twrp=Re-Injecting TWRP...}</action>
-					<action function="set">tw_complete_text1={@inject_twrp_complete=TWRP Injection Complete}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="partsdcardsel">
 			<template name="page_n"/>
 
@@ -6678,6 +6164,51 @@
 			</action>
 		</page>
 
+		<page name="installsu">
+			<template name="page_n"/>
+
+			<text style="text_l">
+				<placement x="%col1_x_header%" y="%row3_header_y%"/>
+				<text>{@reboot_hdr=Reboot}</text>
+			</text>
+
+			<text style="text_m">
+				<placement x="%col1_x_header%" y="%row4_header_y%"/>
+				<text>{@su_hdr=SuperSU Check}</text>
+			</text>
+
+			<text style="text_m_accent">
+				<placement x="%center_x%" y="%row2_y%" placement="5"/>
+				<text>{@su_note1=Your device does not appear to be rooted.}</text>
+			</text>
+
+			<text style="text_m">
+				<placement x="%center_x%" y="%row4_y%" placement="5"/>
+				<text>{@su_note2=Install SuperSU now?}</text>
+			</text>
+
+			<text style="text_m">
+				<placement x="%center_x%" y="%row5_y%" placement="5"/>
+				<text>{@su_note3=This will root your device.}</text>
+			</text>
+
+			<button style="main_button_half_height">
+				<placement x="%indent%" y="%row18a_y%"/>
+				<text>{@su_cancel=Do not Install}</text>
+				<action function="set">tw_page_done=1</action>
+			</button>
+
+			<slider>
+				<text>{@swipe_su_to_install=Swipe to Install}</text>
+				<actions>
+					<action function="set">tw_action=installsu</action>
+					<action function="set">tw_action_text1={@su_installing=Installing SuperSU}</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="page">singleaction_page</action>
+				</actions>
+			</slider>
+		</page>
+
 		<page name="slideout">
 			<template name="page_n"/>
 			
@@ -6687,7 +6218,7 @@
 			</button>
 			
 			<console>
-				<placement x="%indent%" y="250" w="%content_width%" h="1550"/>
+				<placement x="%indent%" y="250" w="%content_width%" h="1500"/>
 			</console>
 
 			<button>
@@ -6958,6 +6489,1011 @@
 			<action>
 				<touch key="power+voldown" />
 				<action function="screenshot" />
+			</action>
+		</page>
+		
+		<page name="tool_settings">
+			<template name="page_n"/>
+			
+			<button style="status_logo">
+				<placement x="270" y="40"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="260"/>
+				<text>{@tools=Tools}</text>
+				<action function="page">tools</action>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="410"/>
+				<text>Theme Settings</text>
+				<action function="page">color_changer</action>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="560"/>
+				<text>{@about_theme=About Theme}</text>
+				<action function="page">about</action>
+			</button>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="tools">
+			<template name="page_n"/>
+			
+			<button style="status_logo">
+				<placement x="270" y="40"/>
+				<action function="screenshot"/>
+			</button>
+			
+            <button style="tools_button">
+                 <placement x="%indent_tools_button_left%" y="276"/>
+                 <text>Magisk-Treble</text>
+                 <actions>
+                     <action function="set">tw_back=advanced</action>
+                     <action function="set">tw_filename=/sdcard/TWRP/tools/magisk-treble.zip</action>
+                     <action function="set">tw_action=queuezip</action>
+                     <action function="set">tw_has_action2=1</action>
+                     <action function="set">tw_action2=flash</action>
+                     <action function="set">tw_action2_param=flash_zip</action>
+                     <action function="set">tw_text1={@Magisk_text=Magisk will be installed.}</action>
+                     <action function="set">tw_text2={@Magisk_confirm=Try to install it?}</action>
+                     <action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+                     <action function="page">confirm_action</action>
+                 </actions>
+            </button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="426"/>
+				<text>Magisk-Normal</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools/magisk.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Magisk_text=Magisk will be installed.}</action>
+					<action function="set">tw_text2={@Magisk_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="576"/>
+				<text>{@Unroot_Magisk_btn=Unroot Magisk}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools/unrootmagisk.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Unroot_Magisk_text=Unroot Magisk will be installed.}</action>
+					<action function="set">tw_text2={@Unroot_Magisk_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="726"/>
+				<text>{@Lazy_Flasher_btn=Lazy Flasher}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools/lazyflasher.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Lazy_Flasher_text=Lazy Flasher will be installed.}</action>
+					<action function="set">tw_text2={@Lazy_Flasher_confirm=Try to Lazy Flasher Device?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="876"/>
+				<text>{@Reset_Password_btn=Reset Password}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools/rmpass.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Reset_Password_text=Reset Password will be installed.}</action>
+					<action function="set">tw_text2={@Reset_Password_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="1026"/>
+				<text>Aroma</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools/aroma.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1=Aroma will be installed.</action>
+					<action function="set">tw_text2=Try to install it?</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="1176"/>
+				<text>{@Ramdisk_Cleaner_btn=Ramdisk Cleaner}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/ramdiskcleaner.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Ramdisk_Cleaner_text=Ramdisk Cleaner will be installed.}</action>
+					<action function="set">tw_text2={@Ramdisk_Cleaner_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="276"/>
+				<text>{@Enable_HAL3_btn=Enabled HAL3}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/enablehal3.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@Enable_HAL3_text=Enable HAL3 will be installed.}</action>
+					<action function="set">tw_text2={@Enable_HAL3_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="426"/>
+				<text>Disable HAL3</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/disablehal3.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1=Disable HAL3 will be installed.</action>
+					<action function="set">tw_text2={@Enable_HAL3_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="576"/>
+				<text>{@App_Delete_btn=App Delete}</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/appdel.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1={@App_Delete_text=App Delete will be installed.}</action>
+					<action function="set">tw_text2={@App_Delete_confirm=Try to install it?}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="726"/>
+				<text>Enable Navbar</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/nb.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1=Navbar will be installed.</action>
+					<action function="set">tw_text2=Try to install it?</action>
+										<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="876"/>
+				<text>Disable Navbar</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/unnb.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1=Navbar will be uninstalled.</action>
+					<action function="set">tw_text2=Try to install it?</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="1026"/>
+				<text>Subs Remover</text>
+				<actions>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_filename=/sdcard/TWRP/tools2/subs.zip</action>
+					<action function="set">tw_action=queuezip</action>
+					<action function="set">tw_has_action2=1</action>
+					<action function="set">tw_action2=flash</action>
+					<action function="set">tw_action2_param=flash_zip</action>
+					<action function="set">tw_text1=subs overlay remover will be uninstalled.</action>
+					<action function="set">tw_text2=Try to install it?</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">tool_settings</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="about">
+			<template name="about"/>
+			
+			<button>
+				<placement x="62" y="50"/>
+				<image resource="gml_logo"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="645"/>
+				<text>About DS</text>
+				<action function="page">about</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="645"/>
+				<text>Credits</text>
+				<action function="page">credits</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="795"/>
+				<text>Maintainers</text>
+				<action function="page">maintainers</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="795"/>
+				<text>Changelog</text>
+				<action function="page">changelog</action>
+			</button>
+			
+			<fill color="#FFFFFF">
+				<placement x="0" y="1014" w="1080" h="5"/>
+			</fill>
+			
+			<image>
+				<placement x="74" y="1084"/>
+				<image resource="icon_theme"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="165" y="1100"/>
+				<text>{@theme=Theme:}</text>
+			</text>
+			
+			<text color="#EEEEEE">
+				<font resource="font_m"/>
+				<placement x="305" y="1100"/>
+				<text>Dark Material TWRP</text>
+			</text>
+			
+			<image>
+				<placement x="74" y="1199"/>
+				<image resource="icon_creator"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="165" y="1218"/>
+				<text>Developed by:</text>
+			</text>
+			
+			<text color="#EEEEEE">
+				<font resource="font_m"/>
+				<placement x="420" y="1218"/>
+				<text>Sipun Ku Mahanta</text>
+			</text>
+			
+			<image>
+				<placement x="74" y="1314"/>
+				<image resource="icon_tester"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="165" y="1335"/>
+				<text>{@about1=Theme Designer:}</text>
+			</text>
+			
+			<text color="#EEEEEE">
+				<font resource="font_m"/>
+				<placement x="467" y="1335"/>
+				<text>Pasakalis George (G.M.L.)</text>
+			</text>
+
+			<image>
+				<placement x="74" y="1429"/>
+				<image resource="icon_about"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="165" y="1445"/>
+				<text>{@about9=Version:}</text>
+			</text>
+			
+			<text color="#EEEEEE">
+				<font resource="font_m"/>
+				<placement x="316" y="1445"/>
+				<text>{@about10=TWRP: %tw_version%}</text>
+			</text>
+
+			<image>
+				<placement x="74" y="1544"/>
+				<image resource="icon_date"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="165" y="1565"/>
+				<text>{@about11=Date Project:}</text>
+			</text>
+			
+			<text color="#EEEEEE">
+				<font resource="font_m"/>
+				<placement x="410" y="1565"/>
+				<text>23/06/18</text>
+			</text>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="maintainers">
+			<template name="about"/>
+			
+			<button>
+				<placement x="62" y="50"/>
+				<image resource="gml_logo"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="645"/>
+				<text>About DS</text>
+				<action function="page">about</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="645"/>
+				<text>Credits</text>
+				<action function="page">credits</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="795"/>
+				<text>Maintainers</text>
+				<action function="page">maintainers</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="795"/>
+				<text>Changelog</text>
+				<action function="page">changelog</action>
+			</button>
+			
+			<fill color="#FFFFFF">
+				<placement x="0" y="1014" w="1080" h="5"/>
+			</fill>
+			
+			<image>
+				<placement x="42" y="1100"/>
+				<image resource="maint_logo1"/>
+			</image>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="188" y="1060"/>
+				<text>Redmi 3S</text>
+			</text>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="188" y="1110"/>
+				<text>land</text>
+			</text>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="188" y="1155"/>
+				<text>Sipun Ku Mahanta</text>
+			</text>
+			
+			<text color="%themeheader_color%">
+				<font resource="font_m"/>
+				<placement x="188" y="1200"/>
+				<text>(Darkstar085)</text>
+			</text>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="credits">
+			<template name="about"/>
+			
+			<button>
+				<placement x="62" y="50"/>
+				<image resource="gml_logo"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="645"/>
+				<text>About DS</text>
+				<action function="page">about</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="645"/>
+				<text>Credits</text>
+				<action function="page">credits</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="795"/>
+				<text>Maintainers</text>
+				<action function="page">maintainers</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="795"/>
+				<text>Changelog</text>
+				<action function="page">changelog</action>
+			</button>
+			
+			<fill color="#FFFFFF">
+				<placement x="0" y="1014" w="1080" h="5"/>
+			</fill>
+			
+			<listbox style="changelog">
+				<placement x="25" y="1046" w="1031" h="691"/>
+				<listitem name="twrp.me - For Official TWRP"/>
+				<listitem name="PitchBlack Team - For Pitchblack TWRP"/>
+				<listitem name="Chainfire - For SuperSU"/>
+				<listitem name="Topjohnwu - For Magisk"/>
+				<listitem name="Redwolf Team - For Redwolf TWRP"/>
+				<listitem name="Jcadduono - For Lazyflasher"/>
+				<listitem name="The Pirate Predator - App Deleter"/>
+				<listitem name="Helmiau - Cam2API Enabler(HAL3)"/>
+				<listitem name="Magua - Password Remover"/>
+				<listitem name="You - For Using It"/>
+			</listbox>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="changelog">
+			<template name="about"/>
+			
+			<button>
+				<placement x="62" y="50"/>
+				<image resource="gml_logo"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="645"/>
+				<text>About DS</text>
+				<action function="page">about</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="645"/>
+				<text>Credits</text>
+				<action function="page">credits</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_left%" y="795"/>
+				<text>Maintainers</text>
+				<action function="page">maintainers</action>
+			</button>
+			
+			<button style="tools_button">
+				<placement x="%indent_tools_button_right%" y="795"/>
+				<text>Changelog</text>
+				<action function="page">changelog</action>
+			</button>
+			
+			<fill color="#FFFFFF">
+				<placement x="0" y="1014" w="1080" h="5"/>
+			</fill>
+			
+			<listbox style="changelog">
+				<placement x="25" y="1046" w="1031" h="691"/>
+				<listitem name="Changelog 1"/>
+				<listitem name="Changelog 2"/>
+				<listitem name="Changelog 3"/>
+				<listitem name="Changelog 4"/>
+				<listitem name="Changelog 5"/>
+			</listbox>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+		</page>
+		
+		<page name="text_color">
+			<template name="page_n"/>
+			
+			<button style="status_logo">
+				<placement x="270" y="40"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<text style="text_m2">
+				<placement x="246" y="260"/>
+				<text>{@text_color1=Theme Text Color}</text>
+			</text>
+			
+			<text style="text_m_fail">
+				<placement x="48" y="390"/>
+				<text>{@text_color2=CHANGED IN ALL THEMES}</text>
+			</text>
+			
+			<text style="text_m_fail">
+				<placement x="48" y="460"/>
+				<text>{@text_color3=Theme will reload it automatically}</text>
+			</text>
+			
+			<text style="text_m_fail">
+				<placement x="48" y="520"/>
+				<text>{@text_color4=with your new selected theme text color.}</text>
+			</text>
+			
+			<fill color="#FF0000">
+				<placement x="48" y="700" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="48" y="700"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=FF0000</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#000DFF">
+				<placement x="386" y="700" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="386" y="700"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=000DFF</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#FFFF00">
+				<placement x="724" y="700" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="724" y="700"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=FFFF00</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#F9740B">
+				<placement x="48" y="910" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="48" y="910"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=F9740B</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#09A9FF">
+				<placement x="386" y="910" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="386" y="910"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=09A9FF</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#5133B0">
+				<placement x="724" y="910" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="724" y="910"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=5133B0</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#00E9E9">
+				<placement x="48" y="1120" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="48" y="1120"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=00E9E9</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#0CE900">
+				<placement x="386" y="1120" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="386" y="1120"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=0CE900</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#FDFCFC">
+				<placement x="724" y="1120" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="724" y="1120"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=FDFCFC</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#0E4744">
+				<placement x="48" y="1330" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="48" y="1330"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=0E4744</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#646464">
+				<placement x="386" y="1330" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="386" y="1330"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=646464</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#3D0042">
+				<placement x="724" y="1330" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="724" y="1330"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=3D0042</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#005A9D">
+				<placement x="48" y="1540" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="48" y="1540"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=005A9D</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#FF5AD2">
+				<placement x="386" y="1540" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="386" y="1540"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=FF5AD2</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<fill color="#532F0C">
+				<placement x="724" y="1540" w="308" h="180"/>
+			</fill>
+			
+			<button style="navbutt_tr">
+				<placement x="724" y="1540"/>
+				<actions>
+					<action function="set">tw_main_buttons_color=532F0C</action>
+					<action function="page">change_text_color</action>
+				</actions>
+			</button>
+			
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshot"/>
+			</action>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">tool_settings</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">%tw_page%</action>
+			</action>
+		</page>
+		
+		<page name="change_text_color">
+			<action>
+				<action function="page">text_color</action>
+			</action>
+
+			<action>
+				<actions>
+					<action function="cmd">
+					mkdir "/data/local/twrp";
+					unzip -o "%tw_theme_path%/ui.zip" -d "/data/local/twrp";
+					chmod 777 "/data/local/twrp/zip";
+					mv "/data/local/twrp/ui.xml" "/data/local/twrp/ui_temp.xml";
+					sed "s/%main_buttons_color%/#%tw_main_buttons_color%/g" "/data/local/twrp/ui_temp.xml" &gt; "/data/local/twrp/ui.xml";
+					rm -f "/data/local/twrp/ui_temp.xml";
+					cd "/data/local/twrp";
+					./zip -0 -r "%tw_theme_path%/ui.zip" *;.
+					chown -R media_rw:media_rw "%tw_theme_path%";
+					cd /;
+					rm -r "/data/local/twrp";
+					</action>
+					<action function="reload"/>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="rename_theme">
+			<template name="page_n"/>
+
+			<button style="status_logo">
+				<placement x="270" y="40"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<fill color="%about_back%">
+				<placement x="0" y="295" w="1080" h="170"/>
+			</fill>
+			
+			<fill color="%dialog_front%">
+				<placement x="5" y="300" w="1070" h="160"/>
+			</fill>
+			
+			<text style="text_m_accent">
+				<placement x="%indent%" y="%row2_y%"/>
+				<text>Custom Name:</text>
+			</text>
+
+			<input>
+				<placement x="%indent%" y="%row2_input_y%" w="%content_width%" h="%input_height%"/>
+				<text>%theme_name%</text>
+				<data name="tw_theme_rename"/>
+				<restrict minlen="1" maxlen="128"/>
+				<actions>
+					<action function="set">tw_new_name=%tw_theme_rename%</action>
+					<action function="set">tw_include_new_name=1</action>
+					<action function="set">tw_back=tool_settings</action>
+					<action function="set">theme_name=%tw_theme_rename%</action>
+					<action function="cmd">
+					mkdir "/data/local/twrp";
+					unzip -o "%tw_theme_path%/ui.zip" -d "/data/local/twrp";
+					chmod 777 "/data/local/twrp/zip";
+					mv "/data/local/twrp/ui.xml" "/data/local/twrp/ui_temp.xml";
+					sed "s/%theme_version%/%tw_theme_rename%/g" "/data/local/twrp/ui_temp.xml" &gt; "/data/local/twrp/ui.xml";
+					rm -f "/data/local/twrp/ui_temp.xml";
+					cd "/data/local/twrp";
+					./zip -0 -r "%tw_theme_path%/ui.zip" *;.
+					chown -R media_rw:media_rw "%tw_theme_path%";
+					cd /;
+					rm -r "/data/local/twrp";
+					</action>
+					<action function="reload"/>
+				</actions>
+			</input>
+
+			<fill color="%accent_color%">
+				<placement x="%indent%" y="row4_y" w="%content_width%" h="input_line_width" placement="1"/>
+			</fill>
+
+			<button style="main_button_half_height">
+				<placement x="288" y="852"/>
+				<text>Cancel</text>
+				<action function="page">tool_settings</action>
+			</button>
+
+			<template name="keyboardtemplate"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">%tw_page%</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">tool_settings</action>
+			</action>
+		</page>
+		
+		<page name="color_changer">
+			<template name="page_n"/>
+			
+			<button style="status_logo">
+				<placement x="270" y="40"/>
+				<action function="screenshot"/>
+			</button>
+			
+			<image>
+				<placement x="0" y="281"/>
+				<image resource="ds_image"/>
+			</image>
+			
+			<button style="mat_button">
+				<placement x="35" y="281"/>
+				<actions>
+					<action function="set">tw_theme_name=White</action>
+					<action function="set">tw_folder=ds_white</action>
+					<action function="page">change_theme</action>
+				</actions>
+			</button>
+			
+			<button style="mat_button">
+				<placement x="530" y="281"/>
+				<actions>
+					<action function="set">tw_theme_name=Black</action>
+					<action function="set">tw_folder=ds_black</action>
+					<action function="page">change_theme</action>
+				</actions>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="1228"/>
+				<text>ThemeText Color</text>
+				<action function="page">text_color</action>
+			</button>
+			
+			<button style="main_button_n">
+				<placement x="%indent_main_button%" y="1378"/>
+				<text>Custom Header Name</text>
+				<action function="page">rename_theme</action>
+			</button>
+			
+		<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">tool_settings</action>
+			</action>
+		</page>
+		
+		<page name="change_theme">
+			<action>
+				<condition var1="color_theme_change" var2="0"/>
+				<action function="page">color_changer</action>
+			</action>
+
+			<action>
+				<actions>
+					<action function="cmd">
+					mkdir "/data/local/twrp";
+					unzip -o "%tw_theme_path%/ui.zip" -d "/data/local/twrp";
+					chmod 777 "/data/local/twrp/zip";
+					cp -r /data/local/twrp/themes/%tw_folder%/* "/data/local/twrp/";
+					cd "/data/local/twrp";
+					./zip -0 -r "%tw_theme_path%/ui.zip" *;
+					chown -R media_rw:media_rw "%tw_theme_path%";
+					cd /;
+					rm -r "/data/local/twrp";
+					</action>
+					<action function="set">theme_name=%tw_theme_name%</action>
+					<action function="reload"/>
+				</actions>
 			</action>
 		</page>
 	</pages>

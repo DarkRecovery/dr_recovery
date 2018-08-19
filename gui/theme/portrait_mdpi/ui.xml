@@ -17,7 +17,7 @@
 		<font name="fixed" filename="DroidSansMono.ttf" size="35"/>
 		<font name="font_l" filename="RobotoCondensed-Regular.ttf" size="40"/>
 		<font name="font_m" filename="RobotoCondensed-Regular.ttf" size="40"/>
-		<font name="font_m2" filename="RobotoCondensed-Regular.ttf" size="80"/>
+		<font name="font_m2" filename="RobotoCondensed-Regular.ttf" size="65"/>
 		<font name="font_m3" filename="RobotoCondensed-Regular.ttf" size="70"/>
 		<font name="font_s" filename="RobotoCondensed-Regular.ttf" size="40"/>
 		<font name="keylabel" filename="RobotoCondensed-Regular.ttf" size="40"/>
@@ -40,6 +40,7 @@
 		<image name="cursor" filename="cursor" retainaspect="1"/>
 		<image name="dialogb_empty" filename="dialogb_empty"/>
 		<image name="dialogb_hl" filename="dialogb_hl"/>
+		<image name="ds_image" filename="ds_image"/>
 		<image name="enter" filename="enter" retainaspect="1"/>
 		<image name="fab_selectfolder" filename="fab_selectfolder" retainaspect="1"/>
 		<image name="file" filename="file" retainaspect="1"/>
@@ -62,6 +63,7 @@
 		<image name="kb_hide" filename="kb_hide" retainaspect="1"/>
 		<image name="kb_show" filename="kb_show" retainaspect="1"/>
 		<image name="main_button" filename="main_button"/>
+		<image name="maint_logo1" filename="maint_logo1"/>
 		<image name="main_button_fmo" filename="main_button_fmo" retainaspect="1"/>
 		<image name="main_button_h" filename="main_button_h"/>
 		<image name="main_button_half_height" filename="main_button_half_height"/>
@@ -92,6 +94,7 @@
 		<image name="tab_3" filename="tab_3"/>
 		<image name="tab_4" filename="tab_4"/>
 		<image name="tab_menu" filename="tab_menu"/>
+		<image name="tools_button" filename="tools_button"/>
 	</resources>
 
 	<variables>
@@ -102,7 +105,8 @@
 		<variable name="ab_bc_y" value="114"/>
 		<variable name="ab_btn1_x" value="924"/>
 		<variable name="ab_y" value="84"/>
-		<variable name="accent" value="#00000030"/>
+		<variable name="about_back" value="#7F000000"/>
+		<variable name="accent" value="#010100"/>
 		<variable name="accent_color" value="#7F000000"/>
 		<variable name="tw_is_multirom" value="0" persist="1"/>
 		<variable name="accent_color_semitransparent" value="#0090CA30"/>
@@ -110,7 +114,7 @@
 		<variable name="auto_generate" value="0" persist="1"/>
 		<variable name="back_button_x" value="280"/>
 		<variable name="background_color" value="#7F000000"/>
-		<variable name="background_color2" value="#000000"/>
+		<variable name="background_color2" value="#FDFDFD"/>
 		<variable name="btn1_row" value="435"/>
 		<variable name="btn2_row" value="713"/>
 		<variable name="btn3_col2_x" value="384"/>
@@ -170,6 +174,8 @@
 		<variable name="indent_down_left" value="36"/>
 		<variable name="indent_l" value="0"/>
 		<variable name="indent_main_button" value="0"/>
+		<variable name="indent_tools_button_left" value="9"/>
+		<variable name="indent_tools_button_right" value="538"/>
 		<variable name="indent_main_button_c" value="300"/>
 		<variable name="indent_main_button_r" value="572"/>
 		<variable name="indent_right" value="1070"/>
@@ -191,6 +197,7 @@
 		<variable name="location_install_splash_image" value="/sdcard/Download" persist="1"/>
 		<variable name="location_install_splash_png" value="/sdcard/Download" persist="1"/>
 		<variable name="location_themes" value="/sdcard/Download" persist="1"/>
+		<variable name="middle" value="#010100"/>
 		<variable name="main_buttons_color" value="#EEEEEE"/>
 		<variable name="navbar_btn_y" value="1856"/>
 		<variable name="navbar_height" value="130"/>
@@ -357,7 +364,7 @@
 
 	<templates>
 		<template name="page_n">
-			<background color="#000000"/>
+			<background color="%background_color2%"/>
 			
 			<fill color="#00000030">
 				<condition var1="tw_simulate_actions" var2="0"/>
@@ -366,6 +373,10 @@
 			
 			<fill color="%accent%">
 				<placement x="0" y="0" w="1080" h="240"/>
+			</fill>
+			
+			<fill color="%middle%">
+				<placement x="3" y="258" w="1074" h="1513"/>
 			</fill>
 			
 			<fill color="%text_fail_color%">
@@ -417,6 +428,10 @@
 				<placement x="890" y="%row1_header_y%"/>
 				<text>{@cpu_temp=CPU: %tw_cpu_temp% °C}</text>
 			</text>
+			
+			<fill color="%middle%">
+				<placement x="0" y="%navbar_y%" w="%screen_width%" h="%navbar_height%"/>
+			</fill>
 
 			<button>
 				<condition var1="show_extra_buttons" var2="1"/>
@@ -513,24 +528,36 @@
 		</template>
 		
 		<template name="about">
-			<background color="#000000"/>
+			<background color="%background_color2%"/>
 			
-            <fill color="%accent%">
-				<placement x="0" y="0" w="%screen_width%" h="%screen_height%"/>
-			</fill>
-			
-            <fill color="%accent%">
-				<placement x="75" y="690" w="935" h="1083"/>
-			</fill>
-			
-			<fill color="%accent%">
-				<placement x="82" y="697" w="920" h="1069"/>
-			</fill>
-
 			<fill color="%text_fail_color%">
 				<condition var1="tw_simulate_actions" var2="1"/>
 				<placement x="0" y="0" w="%screen_width%" h="%status_height%"/>
 			</fill>
+			
+			<fill color="%middle%">
+				<placement x="3" y="20" w="1074" h="1750"/>
+			</fill>
+			
+			<fill color="%middle%">
+				<placement x="0" y="%navbar_y%" w="%screen_width%" h="%navbar_height%"/>
+			</fill>
+
+			<button>
+				<condition var1="show_extra_buttons" var2="1"/>
+				<placement x="%reload_button_x%" y="%navbar_btn_y%" placement="4"/>
+				<image resource="reload"/>
+				<condition var1="tw_busy" var2="0"/>
+				<action function="reload"/>
+			</button>
+			
+			<button>
+				<condition var1="show_extra_buttons" var2="1"/>
+				<placement x="%reboot_button_x%" y="%navbar_btn_y%" placement="4"/>
+				<image resource="reboot"/>
+				<condition var1="tw_busy" var2="0"/>
+				<action function="page">reboot_system_routine</action>
+			</button>
 
 			<button>
 				<condition var1="tw_samsung_navbar" op="!=" var2="1"/>
@@ -703,25 +730,25 @@
 
 			<button style="tabs_settings">
 				<text>{@settings_gen_hdr=General}</text>
-				<placement x="0" y="250" w="%tab4_width%" h="%tab_height%"/>
+				<placement x="0" y="270" w="%tab4_width%" h="%tab_height%"/>
 				<action function="page">settings</action>
 			</button>
 
 			<button style="tabs_settings">
 				<text>{@settings_tz_btn=Time Zone}</text>
-				<placement x="270" y="250" w="%tab4_width%" h="%tab_height%"/>
+				<placement x="270" y="270" w="%tab4_width%" h="%tab_height%"/>
 				<action function="page">settings_timezone</action>
 			</button>
 			
 			<button style="tabs_settings">
 				<text>{@rb_recovery_btn=Recovery}</text>
-				<placement x="540" y="250" w="%tab4_width%" h="%tab_height%"/>
+				<placement x="540" y="270" w="%tab4_width%" h="%tab_height%"/>
 				<action function="page">settings_screen</action>
 			</button>
 			
 			<button style="tabs_settings">
 				<text>{@settings_extra_btn=Extra}</text>
-				<placement x="810" y="250" w="%tab4_width%" h="%tab_height%"/>
+				<placement x="810" y="270" w="%tab4_width%" h="%tab_height%"/>
 				<action function="page">settings_vibration</action>
 			</button>
 		</template>
