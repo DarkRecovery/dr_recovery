@@ -146,7 +146,8 @@
 #include <stdlib.h>
 #include <string>
 #include <unistd.h>
-static const std::string DarkStar_tmp_dir = DarkStar_Tmp + "/DarkStar"
+static const std::string DarkStar_Tmp = "/tmp";
+static const std::string DarkStar_tmp_dir = DarkStar_Tmp + "/DarkStar";
 
 
 // Also used:
