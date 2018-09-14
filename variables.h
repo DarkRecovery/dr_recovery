@@ -140,6 +140,16 @@
 #define TW_USE_SHA2                 "tw_use_sha2"
 #define TW_NO_SHA2                  "tw_no_sha2"
 
+
+// *** DarkStar - Variables ** //
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <unistd.h>
+static const std::string DarkStar_Tmp = "/tmp";
+static const std::string DarkStar_tmp_dir = DarkStar_Tmp + "/DarkStar";
+
+
 // Also used:
 //   tw_boot_is_mountable
 //   tw_system_is_mountable
