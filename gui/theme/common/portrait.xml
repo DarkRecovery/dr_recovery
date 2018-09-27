@@ -6539,10 +6539,10 @@
 			
             <button style="tools_button">
                  <placement x="%indent_tools_button_left%" y="276"/>
-                 <text>Magisk-Treble</text>
+                 <text>Magisk</text>
                  <actions>
                      <action function="set">tw_back=advanced</action>
-                     <action function="set">tw_filename=/sdcard/TWRP/tools/magisk-treble.zip</action>
+                     <action function="set">tw_filename=/sdcard/TWRP/tools/magisk.zip</action>
                      <action function="set">tw_action=queuezip</action>
                      <action function="set">tw_has_action2=1</action>
                      <action function="set">tw_action2=flash</action>
@@ -6556,23 +6556,6 @@
 			
 			<button style="tools_button">
 				<placement x="%indent_tools_button_left%" y="426"/>
-				<text>Magisk-Normal</text>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_filename=/sdcard/TWRP/tools/magisk.zip</action>
-					<action function="set">tw_action=queuezip</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=flash</action>
-					<action function="set">tw_action2_param=flash_zip</action>
-					<action function="set">tw_text1={@Magisk_text=Magisk will be installed.}</action>
-					<action function="set">tw_text2={@Magisk_confirm=Try to install it?}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="tools_button">
-				<placement x="%indent_tools_button_left%" y="576"/>
 				<text>{@Unroot_Magisk_btn=Unroot Magisk}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6589,7 +6572,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_left%" y="726"/>
+				<placement x="%indent_tools_button_left%" y="576"/>
 				<text>{@Lazy_Flasher_btn=Lazy Flasher}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6606,7 +6589,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_left%" y="876"/>
+				<placement x="%indent_tools_button_left%" y="726"/>
 				<text>{@Reset_Password_btn=Reset Password}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6623,7 +6606,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_left%" y="1026"/>
+				<placement x="%indent_tools_button_left%" y="876"/>
 				<text>Aroma</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6640,7 +6623,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_left%" y="1176"/>
+				<placement x="%indent_tools_button_left%" y="1026"/>
 				<text>{@Ramdisk_Cleaner_btn=Ramdisk Cleaner}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6657,7 +6640,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="276"/>
+				<placement x="%indent_tools_button_left%" y="1176"/>
 				<text>{@Enable_HAL3_btn=Enabled HAL3}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6674,7 +6657,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="426"/>
+				<placement x="%indent_tools_button_right%" y="276"/>
 				<text>Disable HAL3</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6691,7 +6674,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="576"/>
+				<placement x="%indent_tools_button_right%" y="426"/>
 				<text>{@App_Delete_btn=App Delete}</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6706,9 +6689,9 @@
 					<action function="page">confirm_action</action>
 				</actions>
 			</button>
-
+			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="726"/>
+				<placement x="%indent_tools_button_right%" y="576"/>
 				<text>Enable Navbar</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6719,13 +6702,13 @@
 					<action function="set">tw_action2_param=flash_zip</action>
 					<action function="set">tw_text1=Navbar will be installed.</action>
 					<action function="set">tw_text2=Try to install it?</action>
-										<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
 					<action function="page">confirm_action</action>
 				</actions>
 			</button>
-			
+
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="876"/>
+				<placement x="%indent_tools_button_right%" y="726"/>
 				<text>Disable Navbar</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6742,7 +6725,7 @@
 			</button>
 			
 			<button style="tools_button">
-				<placement x="%indent_tools_button_right%" y="1026"/>
+				<placement x="%indent_tools_button_right%" y="876"/>
 				<text>Subs Remover</text>
 				<actions>
 					<action function="set">tw_back=advanced</action>
@@ -6888,7 +6871,7 @@
 			<text color="#EEEEEE">
 				<font resource="font_m"/>
 				<placement x="410" y="1565"/>
-				<text>23/06/18</text>
+				<text>27/09/18</text>
 			</text>
 			
 			<action>
